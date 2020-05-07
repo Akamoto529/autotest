@@ -1,14 +1,9 @@
 package Pages;
 
-import com.google.common.base.Preconditions;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.concurrent.TimeUnit;
 
 public abstract class BasePage {
+
     protected WebDriver driver;
 
     public BasePage(WebDriver driver) {
@@ -16,11 +11,19 @@ public abstract class BasePage {
     }
 
     protected void write(String text, By locator) {
+        driver.findElement(locator).clear();
         driver.findElement(locator).sendKeys(text);
     }
 
     protected void click(By locator) {
         driver.findElement(locator).click();
+    }
+    protected  boolean isDisplayed(By by){
+        try {
+            return driver.findElement(by).isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
     }
     protected boolean isPresent(By by) {
         try {
@@ -30,10 +33,5 @@ public abstract class BasePage {
             return false;
         }
     }
-    protected boolean isVisible(By by) {
-            return driver.findElement(by).isDisplayed();
-    }
-    public void moveToElement(WebElement webElement){
-        new Actions(driver).moveToElement(webElement).build().perform();
-    }
+
 }
