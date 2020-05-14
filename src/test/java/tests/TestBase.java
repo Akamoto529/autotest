@@ -25,7 +25,7 @@ public class TestBase {
     public void init() {
         driver = new ChromeDriver();
         baseUrl = "https://ok.ru/";
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
         driver.get(baseUrl + "/");
     }
 
