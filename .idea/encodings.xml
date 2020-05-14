@@ -2,7 +2,7 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/src/test/java/Pages/UserPage.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/test/java/Pages/VideoPage.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/test/java/tests/NewTest.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/test/java/Pages/VideoPage/VideoPage.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/test/java/tests/MessageTest.java" charset="windows-1251" />
   </component>
 </project>

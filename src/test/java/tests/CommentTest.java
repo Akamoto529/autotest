@@ -2,27 +2,29 @@ package tests;
 
 import Pages.LoginPage;
 import Pages.UserPage;
+import Pages.VideoLayer;
 import Pages.VideoPage.VideoPage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testng.Assert;
 
-public class AddVideoByLinkTest extends TestBase{
+public class CommentTest extends TestBase{
     private final String VIDEO_NAME = "Cats and Domino";
-    private final String VIDEO_LINK = "https://www.youtube.com/watch?v=7Nn7NZI_LN4";
+    private final String COMMENT_TEXT = "TestCommentary";
     private final String LOGIN = "technopolisbot1";
     private final String PASSWORD = "technopolis16";
-    private VideoPage videoPage;
+    private VideoLayer videoLayer;
     @BeforeEach
     private void before(){
-        videoPage = new LoginPage(driver).Login(LOGIN, PASSWORD).clickVideo(driver).goToMyVideos();
+        new LoginPage(driver).Login(LOGIN, PASSWORD);
+        new UserPage(driver).clickVideo(driver);
+        videoLayer = new VideoPage(driver).goToMyVideos().clickOnVideo(VIDEO_NAME);
     }
 
     @Test
     public void testAddVideoByLink() {
-        Assert.assertTrue(videoPage.downloadVideoByLink(VIDEO_LINK)
-                .goToMyVideos()
-                .isVideoByLinkDisplayed(VIDEO_NAME));
+        videoLayer.typeComment(COMMENT_TEXT);
+        Assert.assertTrue(videoLayer.isCommentDisplayed(COMMENT_TEXT));
     }
     /*@Test
     public void testdeleteVideok() {

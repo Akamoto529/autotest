@@ -12,9 +12,10 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public void Login(String login, String password) {
+    public UserPage Login(String login, String password) {
         write(login, loginField);
         write(password, passwordField);
         click(signInButton);
+        return new UserPage(driver);
     }
 }
