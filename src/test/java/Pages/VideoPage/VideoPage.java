@@ -8,6 +8,10 @@ import Wrappers.WithVideoCard;
 import Wrappers.WithToolbar;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
+
+
+import javax.swing.*;
 
 public class VideoPage extends BasePage implements WithToolbar, WithChannelCard,WithVideoCard {
 
@@ -17,6 +21,7 @@ public class VideoPage extends BasePage implements WithToolbar, WithChannelCard,
     private static final By SUBMIT_BUTTON = By.xpath(".//input[@type = 'submit']");
     private static final By ADD_VIDEO_BY_LINK_BUTTON = By.xpath(".//a[contains(@hrefattrs,'AddVideoByLink')]");
     private static final By LINK_NAME_INPUT_FIELD = By.xpath(".//div[@class = 'video-link-grabber']//child::input[@type = 'text']");
+    private static final By DELETE_VIDEO_BUTTON = By.xpath(".//a[@data-l = 't,delete']");
     private ToolBarWrapper toolbar;
     public VideoPage(WebDriver driver) {
         super(driver);
@@ -45,8 +50,10 @@ public class VideoPage extends BasePage implements WithToolbar, WithChannelCard,
 
     public VideoPage deleteVideo(String name) {
         click(getVideoCardByXPath(name));
-        //click(deleteVideoButton);
-        //click(submitButton);
+        Actions action = new Actions(driver);
+        action.moveToElement(driver.findElement(getVideoCardByXPath(name))).pause(1).click(driver.findElement(DELETE_VIDEO_BUTTON)).build().perform();
+        //        //click(deleteVideoButton);
+        click(SUBMIT_BUTTON);
         return this;
     }
 
