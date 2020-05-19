@@ -18,6 +18,7 @@ public abstract class BasePage {
     protected void click(By locator) {
         driver.findElement(locator).click();
     }
+
     protected  boolean isDisplayed(By by){
         try {
             return driver.findElement(by).isDisplayed();
@@ -25,6 +26,7 @@ public abstract class BasePage {
             return false;
         }
     }
+
     protected boolean isPresent(By by) {
         try {
             driver.findElement(by);
