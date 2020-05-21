@@ -23,11 +23,4 @@ public class AddVideoByLinkTest extends TestBase{
                 .isVideoDisplayed(VIDEO_NAME));
         myVideoPage.deleteVideo(VIDEO_NAME);
     }
-    /*@Test
-    public void testdeleteVideok() {
-        videoPage.goToMyVideos();
-
-        Assert.assertTrue(videoPage.isVideoByLinkDisplayed(VIDEO_NAME));
-    }*/
-
 }

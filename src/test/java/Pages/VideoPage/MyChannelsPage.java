@@ -7,7 +7,13 @@ public class MyChannelsPage extends VideoPage implements IMyChannelsPage {
         super(driver);
     }
     //Переделать ChannelCard для MyChannels
+    @Override
     public boolean isChannelDisplayed(String channelName) {
         return isChannelCardDisplayed(channelName);
+    }
+    @Override
+    public IChannelPage goToChannel(String channelName){
+        click(getChannelXPath(channelName));
+        return new ChannelPage(driver,channelName);
     }
 }

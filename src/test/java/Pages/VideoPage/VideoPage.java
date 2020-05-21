@@ -9,11 +9,9 @@ import Wrappers.WithVideoCard;
 import Wrappers.WithToolbar;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-public class VideoPage extends BasePage implements WithToolbar, WithChannelCard,WithVideoCard, IVideoPage {
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+public class VideoPage extends BasePage implements WithToolbar, WithChannelCard,WithVideoCard, IVideoPage {
 
     //private static final By myVideosButton = By.xpath(".//div[@class = 'nav-side ']//child::a[contains(@hrefattrs,'myVideo')]");
     private static final By CREATE_CHANNEL_BUTTON = By.xpath(".//div[text() = 'Создать канал']");
@@ -44,10 +42,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
     }
 
     @Override
-    public boolean isChannelCardDisplayed(String channelName) {
-        return isDisplayed(getChannelXPath(channelName));
+    public VideoPage downloadVideoFromFile(String pathToFile) {
+        click(ADD_VIDEO_FROM_FILE_BUTTON);
+        write(pathToFile,FILE_INPUT);
+        //driver.findElement(FILE_INPUT).sendKeys(pathToFile);
+        new WebDriverWait(driver,10).until(ExpectedConditions.elementToBeClickable(GO_TO_EDIT_BUTTON));
+        click(GO_TO_EDIT_BUTTON);
+        click(SUBMIT_BUTTON);
+        return this;
     }
-
     @Override
     public IMyVideoPage downloadVideoByLink(String link) {
         click(ADD_VIDEO_BY_LINK_BUTTON);
@@ -56,11 +59,22 @@ import org.openqa.selenium.support.ui.WebDriverWait;
         click(SUBMIT_BUTTON);
         return PageFactory.getMyVideoPage(driver);
     }
+
     @Override
     public boolean isVideoDisplayed(String videoByLinkName) {
         return isDisplayed(getVideoCardByXPath(videoByLinkName));
     }
+    @Override
+    public boolean isChannelCardDisplayed(String channelName) {
+        return isDisplayed(getChannelXPath(channelName));
+    }
 
+    @Override
+    public IMyChannelsPage goToMyChannels(){
+        driver.get("https://ok.ru/video/myAlbums");
+        return new MyChannelsPage(driver);
+    }
+    @Override
     public IMyVideoPage goToMyVideos() {
         driver.get("https://ok.ru/video/myVideo");
         return PageFactory.getMyVideoPage(driver);
@@ -74,15 +88,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
         return this.toolbar;
     }
 
-    public VideoPage downloadVideoFromFile(String pathToFile) {
-        click(ADD_VIDEO_FROM_FILE_BUTTON);
-        write(pathToFile,FILE_INPUT);
-        //driver.findElement(FILE_INPUT).sendKeys(pathToFile);
-        new WebDriverWait(driver,10).until(ExpectedConditions.elementToBeClickable(GO_TO_EDIT_BUTTON));
-        click(GO_TO_EDIT_BUTTON);
-        click(SUBMIT_BUTTON);
-        return this;
-    }
 
     public void waitUntilPageLoad() {
         waitUntilElementVisible(CONTENT_BLOCK);

@@ -2,7 +2,10 @@ package tests;
 
 import Pages.LoginPage;
 import Pages.VideoPage.ChannelPage;
+import Pages.VideoPage.IChannelPage;
+import Pages.VideoPage.IVideoPage;
 import Pages.VideoPage.VideoPage;
+import Wrappers.Accounts.Bot;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,25 +14,25 @@ import org.junit.jupiter.api.Test;
 public class ChangeChannelNameTest extends TestBase {
     private final String CHANNEL_NAME = "TestName";
     private final String NEW_CHANNEL_NAME = "ChangedTestName";
-    private final String LOGIN = "technopolisbot1";
-    private final String PASSWORD = "technopolis16";
-    private VideoPage videoPage;
-    private ChannelPage channelPage;
+    private final Bot bot = new Bot("technopolisbot1","technopolis16");
+    private IVideoPage videoPage;
+    private IChannelPage channelPage;
     @BeforeEach
     private void before(){
-        videoPage = new LoginPage(driver)
-                .Login(LOGIN, PASSWORD)
-                .clickVideo(driver);
-        channelPage = videoPage.createChannel(CHANNEL_NAME);
+        channelPage = new LoginPage(driver)
+                .Login(bot.getLogin(), bot.getPassword())
+                .clickVideo(driver).createChannel(CHANNEL_NAME);
     }
     @Test
     public void testChannelChange() {
-        channelPage.changeChannelName(NEW_CHANNEL_NAME);
-        Assertions.assertTrue(videoPage.isChannelDisplayed(NEW_CHANNEL_NAME));
+        Assertions.assertTrue(channelPage
+                .changeChannelName(NEW_CHANNEL_NAME)
+                .goToMyChannels()
+                .isChannelCardDisplayed(NEW_CHANNEL_NAME));
     }
 
     @AfterEach
     public void after() {
-        channelPage.deleteChannel();
-    }
+        new VideoPage(driver).goToMyChannels().goToChannel(CHANNEL_NAME).deleteChannel();
+}
 }
