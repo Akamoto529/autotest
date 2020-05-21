@@ -1,7 +1,8 @@
 package tests;
 
 import Pages.LoginPage;
-import Pages.VideoPage.VideoPage;
+import Pages.VideoPage.IMyVideoPage;
+import Wrappers.Accounts.Bot;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testng.Assert;
@@ -9,20 +10,18 @@ import org.testng.Assert;
 public class AddVideoByLinkTest extends TestBase{
     private final String VIDEO_NAME = "Cats and Domino";
     private final String VIDEO_LINK = "https://www.youtube.com/watch?v=7Nn7NZI_LN4";
-    private final String LOGIN = "technopolisbot1";
-    private final String PASSWORD = "technopolis16";
-    private VideoPage videoPage;
+    private final Bot bot = new Bot("technopolisbot1","technopolis16");
+    private IMyVideoPage myVideoPage;
     @BeforeEach
     private void before(){
-        videoPage = new LoginPage(driver).Login(LOGIN, PASSWORD).clickVideo(driver).goToMyVideos();
+        myVideoPage = new LoginPage(driver).Login(bot.getLogin(), bot.getPassword()).clickVideo(driver).goToMyVideos();
     }
 
     @Test
     public void testAddVideoByLink() {
-        Assert.assertTrue(videoPage.downloadVideoByLink(VIDEO_LINK)
-                .goToMyVideos()
+        Assert.assertTrue(myVideoPage.downloadVideoByLink(VIDEO_LINK)
                 .isVideoDisplayed(VIDEO_NAME));
-        videoPage.deleteVideo(VIDEO_NAME);
+        myVideoPage.deleteVideo(VIDEO_NAME);
     }
     /*@Test
     public void testdeleteVideok() {
