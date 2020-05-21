@@ -2,6 +2,8 @@ package Wrappers;
 
 import Pages.BasePage;
 import Pages.ChatLayer;
+import Pages.VideoPage.ITopVideoPage;
+import Pages.VideoPage.TopVideoPage;
 import Pages.VideoPage.VideoPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -18,8 +20,8 @@ public class ToolBarWrapper extends BasePage {
         driver.findElement(MESSAGE_BUTTON).click();
         return new ChatLayer(driver);
     }
-    public VideoPage clickVideo(){
+    public ITopVideoPage clickVideo(){
         driver.findElement(VIDEO_BUTTON).click();
-        return new VideoPage(driver);
+        return new TopVideoPage(driver);
     }
 }

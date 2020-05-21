@@ -29,7 +29,7 @@ public class ChangeChannelNameTest extends TestBase {
         Assertions.assertTrue(channelPage
                 .changeChannelName(NEW_CHANNEL_NAME)
                 .goToMyChannels()
-                .isChannelCardDisplayed(NEW_CHANNEL_NAME));
+                .isChannelDisplayed(NEW_CHANNEL_NAME));
     }
 
     @AfterEach

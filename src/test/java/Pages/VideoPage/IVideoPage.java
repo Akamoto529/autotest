@@ -10,6 +10,5 @@ public interface IVideoPage {
     IMyChannelsPage goToMyChannels();
     IVideoLayer clickOnVideo(String videoName);
     boolean isVideoDisplayed(String videoByLinkName);
-    boolean isChannelCardDisplayed(String channelName); //Устарело, переделать в отображение на MyChannelPage
     VideoPage downloadVideoFromFile(String pathToFile);
 }

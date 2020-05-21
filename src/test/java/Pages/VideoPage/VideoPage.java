@@ -6,13 +6,12 @@ import Pages.IVideoLayer;
 import Pages.VideoPage.MyChannelsPage.IMyChannelsPage;
 import Pages.VideoPage.MyChannelsPage.MyChannelsPage;
 import Wrappers.ToolBarWrapper;
-import Wrappers.WithChannelCard;
 import Wrappers.WithVideoCard;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-public class VideoPage extends BasePage implements  WithChannelCard,WithVideoCard, IVideoPage {
+public class VideoPage extends BasePage implements  WithVideoCard, IVideoPage {
 
     //private static final By myVideosButton = By.xpath(".//div[@class = 'nav-side ']//child::a[contains(@hrefattrs,'myVideo')]");
     private static final By CREATE_CHANNEL_BUTTON = By.xpath(".//div[text() = 'Создать канал']");
@@ -64,10 +63,6 @@ public class VideoPage extends BasePage implements  WithChannelCard,WithVideoCar
     @Override
     public boolean isVideoDisplayed(String videoByLinkName) {
         return isDisplayed(getVideoCardByXPath(videoByLinkName));
-    }
-    @Override
-    public boolean isChannelCardDisplayed(String channelName) {
-        return isDisplayed(getChannelXPath(channelName));
     }
 
     @Override
