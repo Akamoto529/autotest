@@ -30,6 +30,7 @@ public class ChannelPage extends VideoPage {
         click(deleteChannelButton);
         click(submitButton);
         driver.get("https://ok.ru/video/myAlbums");
+        //waitUntilNotElementInvisible();
         return new MyChannelsPage(driver);
     }
 }

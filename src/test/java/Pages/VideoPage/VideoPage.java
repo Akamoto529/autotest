@@ -12,9 +12,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-
-import javax.swing.*;
-
 public class VideoPage extends BasePage implements WithToolbar, WithChannelCard, WithVideoCard {
 
     private static final By myVideosButton = By.xpath(".//div[@class = 'nav-side ']//child::a[contains(@hrefattrs,'myVideo')]");
@@ -27,11 +24,15 @@ public class VideoPage extends BasePage implements WithToolbar, WithChannelCard,
     private static final By ADD_VIDEO_FROM_FILE_BUTTON = By.xpath(".//div[@class = 'video-upload-menu_tx' and text() = 'Видео']");
     private static final By FILE_INPUT = By.xpath(".//input[@type = 'file']");
     private static final By GO_TO_EDIT_BUTTON = By.xpath(".//a[contains(@class,'go-to-editor')]");
+    private static final By SIDEMENU_BLOCK = By.xpath(".//div[contains(@class,'navigation')]");
+    private static final By CONTENT_BLOCK = By.xpath(".//div[contains(@id,'VideoContentBlock')]");
+    private static final By SEARCH_BLOCK = By.xpath(".//div[contains(@class,'it_w search-input')]");
     private ToolBarWrapper toolbar;
 
     public VideoPage(WebDriver driver) {
         super(driver);
         this.toolbar = new ToolBarWrapper(driver);
+        waitUntilPageLoad();
     }
 
 
@@ -97,5 +98,11 @@ public class VideoPage extends BasePage implements WithToolbar, WithChannelCard,
         click(GO_TO_EDIT_BUTTON);
         click(SUBMIT_BUTTON);
         return this;
+    }
+
+    public void waitUntilPageLoad() {
+        waitUntilElementVisible(CONTENT_BLOCK);
+        waitUntilElementVisible(SEARCH_BLOCK);
+        waitUntilElementVisible(SIDEMENU_BLOCK);
     }
 }
