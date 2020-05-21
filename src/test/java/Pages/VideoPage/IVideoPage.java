@@ -1,6 +1,7 @@
 package Pages.VideoPage;
 
 import Pages.IVideoLayer;
+import Pages.VideoPage.MyChannelsPage.IMyChannelsPage;
 
 public interface IVideoPage {
     IChannelPage createChannel(String name);

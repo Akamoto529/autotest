@@ -14,7 +14,10 @@ public class AddVideoByLinkTest extends TestBase{
     private IMyVideoPage myVideoPage;
     @BeforeEach
     private void before(){
-        myVideoPage = new LoginPage(driver).Login(bot.getLogin(), bot.getPassword()).clickVideo(driver).goToMyVideos();
+        myVideoPage = new LoginPage(driver)
+                        .Login(bot.getLogin(), bot.getPassword())
+                        .getToolBar().clickVideo()
+                        .goToMyVideos();
     }
 
     @Test

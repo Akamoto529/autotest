@@ -17,7 +17,8 @@ public class AddVideoFromFileTest extends TestBase{
     private void before(){
         videoPage = new LoginPage(driver)
                     .Login(bot.getLogin(), bot.getPassword())
-                    .clickVideo(driver).goToMyVideos();
+                    .getToolBar().clickVideo()
+                    .goToMyVideos();
     }
 
     @Test

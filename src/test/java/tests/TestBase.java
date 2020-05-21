@@ -9,7 +9,6 @@ import java.util.concurrent.TimeUnit;
 
 public class TestBase {
     private String baseUrl;
-    private StringBuffer verificationErrors = new StringBuffer();
     protected WebDriver driver;
 
     @BeforeEach
@@ -25,7 +24,7 @@ public class TestBase {
     public void init() {
         driver = new ChromeDriver();
         baseUrl = "https://ok.ru/";
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.get(baseUrl + "/");
     }
 

@@ -3,6 +3,8 @@ package Factories;
 import Pages.IVideoLayer;
 import Pages.VideoLayer;
 import Pages.VideoPage.*;
+import Pages.VideoPage.MyChannelsPage.IMyChannelsPage;
+import Pages.VideoPage.MyChannelsPage.MyChannelsPage;
 import org.openqa.selenium.WebDriver;
 
 public class PageFactory {

@@ -1,6 +1,7 @@
 package Pages.VideoPage;
 
 import Factories.PageFactory;
+import Pages.VideoPage.MyChannelsPage.IMyChannelsPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

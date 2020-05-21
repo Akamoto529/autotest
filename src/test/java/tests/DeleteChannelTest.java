@@ -19,7 +19,8 @@ public class DeleteChannelTest extends TestBase {
     private void before(){
         channelPage = new LoginPage(driver)
                 .Login(bot.getLogin(), bot.getPassword())
-                .clickVideo(driver).createChannel(CHANNEL_NAME);
+                .getToolBar().clickVideo()
+                .createChannel(CHANNEL_NAME);
     }
     @Test
     public void testChannelDeletion() {

@@ -16,7 +16,7 @@ public class CreateChannelTest extends TestBase {
     private void before(){
         videoPage = new LoginPage(driver)
                 .Login(bot.getLogin(), bot.getPassword())
-                .clickVideo(driver);
+                .getToolBar().clickVideo();
     }
     @Test
     public void testChannelCreation() {

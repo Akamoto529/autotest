@@ -3,15 +3,16 @@ package Pages.VideoPage;
 import Factories.PageFactory;
 import Pages.BasePage;
 import Pages.IVideoLayer;
+import Pages.VideoPage.MyChannelsPage.IMyChannelsPage;
+import Pages.VideoPage.MyChannelsPage.MyChannelsPage;
 import Wrappers.ToolBarWrapper;
 import Wrappers.WithChannelCard;
 import Wrappers.WithVideoCard;
-import Wrappers.WithToolbar;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-public class VideoPage extends BasePage implements WithToolbar, WithChannelCard,WithVideoCard, IVideoPage {
+public class VideoPage extends BasePage implements  WithChannelCard,WithVideoCard, IVideoPage {
 
     //private static final By myVideosButton = By.xpath(".//div[@class = 'nav-side ']//child::a[contains(@hrefattrs,'myVideo')]");
     private static final By CREATE_CHANNEL_BUTTON = By.xpath(".//div[text() = 'Создать канал']");

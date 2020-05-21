@@ -19,7 +19,8 @@ public class CommentTest extends TestBase{
     private void before(){
         videoLayer = new LoginPage(driver)
                     .Login(bot.getLogin(), bot.getPassword())
-                    .clickVideo(driver).goToMyVideos()
+                    .getToolBar().clickVideo()
+                    .goToMyVideos()
                     .clickOnVideo(VIDEO_NAME);
     }
 

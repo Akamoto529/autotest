@@ -21,7 +21,8 @@ public class ChangeChannelNameTest extends TestBase {
     private void before(){
         channelPage = new LoginPage(driver)
                 .Login(bot.getLogin(), bot.getPassword())
-                .clickVideo(driver).createChannel(CHANNEL_NAME);
+                .getToolBar().clickVideo()
+                .createChannel(CHANNEL_NAME);
     }
     @Test
     public void testChannelChange() {
@@ -33,6 +34,6 @@ public class ChangeChannelNameTest extends TestBase {
 
     @AfterEach
     public void after() {
-        new VideoPage(driver).goToMyChannels().goToChannel(CHANNEL_NAME).deleteChannel();
+        new VideoPage(driver).goToMyChannels().goToChannel(NEW_CHANNEL_NAME).deleteChannel();
 }
 }

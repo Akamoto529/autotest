@@ -16,12 +16,12 @@ public class MessageTest extends TestBase {
     public void testMessageSending() {
         Assert.assertTrue(new LoginPage(driver)
                 .Login(bot.getLogin(), bot.getPassword())
-                .clickMessages(driver)
+                .getToolBar().clickMessages()
                 .clickUserChat(userName)
                 .typeMessage(message).checkLastMessage(message));
         Assert.assertTrue(new LoginPage(driver)
                 .Login(bot.getLogin(), bot.getPassword())
-                .clickMessages(driver)
+                .getToolBar().clickMessages()
                 .clickUserChat(userName)
                 .typeMessage(message).checkLastMessage(message));
     }
