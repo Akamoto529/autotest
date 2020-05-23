@@ -7,8 +7,9 @@ public interface IVideoPage {
     IMyVideoPage downloadVideoByLink(String link);
     IMyVideoPage goToMyVideos();
     IMyChannelsPage goToMyChannels();
+    IMyVideoHistoryPage goToMyHistory();
     IVideoLayer clickOnVideo(String videoName);
     boolean isVideoDisplayed(String videoByLinkName);
-    boolean isChannelCardDisplayed(String channelName); //Устарело, переделать в отображение на MyChannelPage
+    boolean isChannelCardDisplayed(String channelName); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ MyChannelPage
     VideoPage downloadVideoFromFile(String pathToFile);
 }

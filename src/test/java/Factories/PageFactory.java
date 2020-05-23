@@ -18,4 +18,7 @@ public class PageFactory {
     public static IMyChannelsPage getMyChannelsPage(WebDriver driver){
         return new MyChannelsPage(driver);
     }
+    public static IMyVideoHistoryPage getMyVideoHistoryPage(WebDriver driver){
+        return new MyVideoHistoryPage (driver);
+    }
 }
