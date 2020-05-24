@@ -2,7 +2,7 @@ package Pages.VideoPage;
 
 import Factories.PageFactory;
 import Pages.BasePage;
-import Pages.IVideoLayer;
+import Layers.IVideoLayer;
 import Pages.VideoPage.MyChannelsPage.IMyChannelsPage;
 import Pages.VideoPage.MyChannelsPage.MyChannelsPage;
 import Wrappers.ToolBarWrapper;

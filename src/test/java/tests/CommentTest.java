@@ -1,10 +1,7 @@
 package tests;
 
-import Pages.IVideoLayer;
+import Layers.IVideoLayer;
 import Pages.LoginPage;
-import Pages.UserPage;
-import Pages.VideoLayer;
-import Pages.VideoPage.VideoPage;
 import Wrappers.Accounts.Bot;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

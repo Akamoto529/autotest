@@ -1,5 +1,6 @@
-package Pages;
+package Layers;
 
+import Pages.BasePage;
 import Wrappers.WithCommentaries;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

@@ -1,6 +1,6 @@
 package Pages.VideoPage;
 
-import Pages.IVideoLayer;
+import Layers.IVideoLayer;
 import Pages.VideoPage.MyChannelsPage.IMyChannelsPage;
 
 public interface IVideoPage {
