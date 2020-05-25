@@ -1,7 +1,6 @@
 package tests;
 
 import Pages.LoginPage;
-import Pages.UserPage;
 import Wrappers.Accounts.Bot;
 import org.junit.jupiter.api.Test;
 import org.testng.Assert;

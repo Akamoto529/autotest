@@ -1,5 +1,6 @@
 package tests;
 
+import Pages.FriendPage.IFriendVideoPage;
 import Pages.LoginPage;
 import Pages.VideoPage.IVideoPage;
 import Wrappers.Accounts.Bot;
@@ -17,12 +18,12 @@ public class OnlyFriendVisibleVideoFalseTest extends TestBase {
     private final Bot bot = new Bot("technopolisbot1","technopolis16");
     private final Bot friendBot = new Bot("89502254448","test2020");
     private IVideoPage videoPage;
-    private IVideoPage friendVideoPage;
+    private IFriendVideoPage friendVideoPage;
     @BeforeEach
     private void before(){
         videoPage = new LoginPage(driver)
                 .Login(bot.getLogin(), bot.getPassword())
-                .clickVideo(driver);
+                .getToolBar().clickVideo();
         videoPage.downloadVideoFromFile(PATH_TO_VIDEO).setVisibilityOfVideo("Мои друзья");
         //videoPage.goToMyVideos();
         //запихнуть все
@@ -33,8 +34,10 @@ public class OnlyFriendVisibleVideoFalseTest extends TestBase {
         WebDriver newDriver = new ChromeDriver();
         newDriver.get("https://ok.ru/");
         friendVideoPage = new LoginPage(newDriver)
-                .Login(friendBot.getLogin(), friendBot.getPassword()).goToFriendVideo(FRIEND_VIDEO_URL);
-        Assert.assertFalse(friendVideoPage.isVideoDisplayed(VIDEO_NAME));
+                .Login(friendBot.getLogin(), friendBot.getPassword())
+                .goToFriendPage(FRIEND_VIDEO_URL)
+                .goToFriendVideo();
+        Assert.assertFalse(friendVideoPage.getVideoCard().isVideoDisplayed(VIDEO_NAME));
     }
 /*
     @AfterEach

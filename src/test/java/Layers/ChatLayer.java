@@ -13,13 +13,13 @@ public class ChatLayer extends BasePage implements IChatLayer {
     }
 
     @Override
-    public ChatLayer clickUserChat(String userName) {
+    public IChatLayer clickUserChat(String userName) {
         click(By.xpath(".//*[./*[./div[@class='chats_i_h ellip'and text() = '"+userName+"' ]]]"));
         return this;
     }
 
     @Override
-    public ChatLayer typeMessage(String message) {
+    public IChatLayer typeMessage(String message) {
         write(message, TEXT_INPUT_FIELD);
         click(SEND_BUTTON);
         return this;

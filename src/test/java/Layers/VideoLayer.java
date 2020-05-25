@@ -1,5 +1,6 @@
 package Layers;
 
+import Pages.BasePage;
 import Pages.VideoPage.IMyVideoPage;
 import Wrappers.WithCommentaries;
 import org.openqa.selenium.By;
@@ -15,7 +16,7 @@ public class VideoLayer extends BasePage implements WithCommentaries, IVideoLaye
     }
 
     @Override
-    public VideoLayer typeComment(String text){
+    public IVideoLayer typeComment(String text){
         write(text,COMMENT_INPUT_FIELD);
         click(SUBMIT_COMMENT_BUTTON);
         return this;
@@ -34,7 +35,7 @@ public class VideoLayer extends BasePage implements WithCommentaries, IVideoLaye
     }
 
     @Override
-    public VideoLayer waitToGetInHistory () {
+    public IVideoLayer waitToGetInHistory () {
         hardSleep();
         return this;
     }

@@ -1,7 +1,7 @@
 package Layers;
 
 public interface IChatLayer {
-    ChatLayer clickUserChat(String userName);
-    ChatLayer typeMessage(String message);
+    IChatLayer clickUserChat(String userName);
+    IChatLayer typeMessage(String message);
     boolean checkLastMessage(String text);
 }

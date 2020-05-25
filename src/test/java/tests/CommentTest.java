@@ -18,7 +18,7 @@ public class CommentTest extends TestBase{
                     .Login(bot.getLogin(), bot.getPassword())
                     .getToolBar().clickVideo()
                     .goToMyVideos()
-                    .clickOnVideo(VIDEO_NAME);
+                    .getVideoCard().clickOnVideo(VIDEO_NAME);
     }
 
     @Test
@@ -26,11 +26,5 @@ public class CommentTest extends TestBase{
         videoLayer.typeComment(COMMENT_TEXT);
         Assert.assertTrue(videoLayer.isCommentDisplayed(COMMENT_TEXT));
     }
-    /*@Test
-    public void testdeleteVideok() {
-        videoPage.goToMyVideos();
-
-        Assert.assertTrue(videoPage.isVideoByLinkDisplayed(VIDEO_NAME));
-    }*/
 
 }

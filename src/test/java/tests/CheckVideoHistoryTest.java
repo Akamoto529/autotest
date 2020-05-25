@@ -19,15 +19,15 @@ public class CheckVideoHistoryTest extends TestBase {
     @BeforeEach
     private void before(){
         myVideoPage = new LoginPage(driver).Login(bot.getLogin(), bot.getPassword())
-                .clickVideo(driver)
+                .getToolBar().clickVideo()
                 .goToMyVideos()
                 .downloadVideoByLink(VIDEO_LINK);
     }
     @Test
     public void testCheckVideoHistoryTest () {
-        myVideoPage.goToMyVideos().clickOnVideo(VIDEO_NAME).waitToGetInHistory().closeVideo();
+        myVideoPage.goToMyVideos().getVideoCard().clickOnVideo(VIDEO_NAME).waitToGetInHistory().closeVideo();
         myVideoHistoryPage = myVideoPage.goToMyHistory();
-        Assert.assertTrue(myVideoHistoryPage.isVideoDisplayed(VIDEO_NAME));
+        Assert.assertTrue(myVideoHistoryPage.getVideoCard().isVideoDisplayed(VIDEO_NAME));
     }
    @AfterEach
     private void after(){

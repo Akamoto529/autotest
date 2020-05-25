@@ -1,18 +1,18 @@
 package Pages.VideoPage;
 
 import Factories.PageFactory;
+import Factories.VideoPageFactory;
 import Pages.BasePage;
-import Layers.IVideoLayer;
 import Pages.VideoPage.MyChannelsPage.IMyChannelsPage;
 import Pages.VideoPage.MyChannelsPage.MyChannelsPage;
 import Wrappers.ToolBarWrapper;
-import Wrappers.WithVideoCard;
+import Wrappers.VideoCardWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-public class VideoPage extends BasePage implements WithToolbar, WithChannelCard,WithVideoCard, IVideoPage {
+public class VideoPage extends BasePage implements IVideoPage {
 
     private static final By CREATE_CHANNEL_BUTTON = By.xpath(".//div[text() = 'Создать канал']");
     private static final By CHANNEL_NAME_INPUT_FIELD = By.xpath(".//input[@id = 'field_albName']");
@@ -27,10 +27,13 @@ public class VideoPage extends BasePage implements WithToolbar, WithChannelCard,
     private static final By CONTENT_BLOCK = By.xpath(".//div[contains(@id,'VideoContentBlock')]");
     private static final By SEARCH_BLOCK = By.xpath(".//div[contains(@class,'it_w search-input')]");
 
-    private ToolBarWrapper toolbar;
+    protected VideoCardWrapper videoCard;
+    protected ToolBarWrapper toolbar;
+
     public VideoPage(WebDriver driver) {
         super(driver);
         this.toolbar = new ToolBarWrapper(driver);
+        this.videoCard = new VideoCardWrapper(driver);
         //waitUntilPageLoad();
     }
 
@@ -39,55 +42,41 @@ public class VideoPage extends BasePage implements WithToolbar, WithChannelCard,
         click(CREATE_CHANNEL_BUTTON);
         write(name, CHANNEL_NAME_INPUT_FIELD);
         click(SUBMIT_BUTTON);
-        return PageFactory.getChannelPage(driver,name);
+        return VideoPageFactory.getChannelPage(driver);
     }
 
     @Override
-    public VideoPage downloadVideoFromFile(String pathToFile)  {
+    public IMyVideoPage downloadVideoFromFile(String pathToFile)  {
         waitUntilPageLoad();
         click(ADD_VIDEO_FROM_FILE_BUTTON);
         hardSleep();
         driver.findElement(FILE_INPUT).sendKeys(pathToFile);
         waitUntilElementClickable(GO_TO_EDIT_BUTTON);
         click(GO_TO_EDIT_BUTTON);
-        return this;
+        return VideoPageFactory.getMyVideoPage(driver);
     }
     @Override
     public IMyVideoPage downloadVideoByLink(String link) {
         click(ADD_VIDEO_BY_LINK_BUTTON);
         write(link, LINK_NAME_INPUT_FIELD);
         click(SUBMIT_BUTTON);
-        return PageFactory.getMyVideoPage(driver);
-    }
-
-    @Override
-    public boolean isVideoDisplayed(String videoByLinkName) {
-        return isDisplayed(getVideoCardByXPath(videoByLinkName));
+        return VideoPageFactory.getMyVideoPage(driver);
     }
 
     @Override
     public IMyChannelsPage goToMyChannels(){
         driver.get("https://ok.ru/video/myAlbums");
-        return new MyChannelsPage(driver);
+        return VideoPageFactory.getMyChannelsPage(driver);
     }
     @Override
     public IMyVideoPage goToMyVideos() {
         driver.get("https://ok.ru/video/myVideo");
-        return PageFactory.getMyVideoPage(driver);
+        return VideoPageFactory.getMyVideoPage(driver);
     }
     @Override
     public IMyVideoHistoryPage goToMyHistory() {
         driver.get("https://ok.ru/video/history");
-        return PageFactory.getMyVideoHistoryPage(driver);
-    }
-    @Override
-    public IVideoLayer clickOnVideo(String videoName){
-        click(getVideoCardByXPath(videoName));
-        return PageFactory.getVideoLayer(driver);
-    }
-
-    public ToolBarWrapper getToolbar(){
-        return this.toolbar;
+        return VideoPageFactory.getMyVideoHistoryPage(driver);
     }
 
     @Override
@@ -97,6 +86,15 @@ public class VideoPage extends BasePage implements WithToolbar, WithChannelCard,
         Select select = new Select(selectElem);
         select.selectByVisibleText(text);
         click(SUBMIT_BUTTON);
+    }
+
+    @Override
+    public VideoCardWrapper getVideoCard(){
+        return videoCard;
+    }
+    @Override
+    public ToolBarWrapper getToolBar(){
+        return this.toolbar;
     }
 
     public void waitUntilPageLoad() {

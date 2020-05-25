@@ -1,4 +1,5 @@
 package Pages;
+import Factories.PageFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -12,10 +13,10 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public UserPage Login(String login, String password) {
+    public IMainPage Login(String login, String password) {
         write(login, loginField);
         write(password, passwordField);
         click(signInButton);
-        return new UserPage(driver);
+        return PageFactory.getMainPage(driver);
     }
 }

@@ -1,5 +1,6 @@
 package Pages;
 
+import Pages.FriendPage.UserPage;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -64,9 +65,9 @@ public abstract class BasePage {
         Actions action = new Actions(driver);
         action.moveToElement(driver.findElement(move)).pause(1).click(driver.findElement(click)).build().perform();
     }
-    public FriendPage addFriend(String friendUrl) {
+    public UserPage addFriend(String friendUrl) {
         driver.get(friendUrl);
         click(ADD_FRIEND_BUTTON);
-        return new FriendPage(driver);
+        return new UserPage(driver);
     }
 }

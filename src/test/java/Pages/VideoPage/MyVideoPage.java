@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 public class MyVideoPage extends VideoPage implements IMyVideoPage{
+
     private static final By DELETE_VIDEO_BUTTON = By.xpath(".//a[@data-l = 't,delete']");
     private static final By VIDEO_CARD = By.xpath(".//div[@class = 'video-card_play']");
 

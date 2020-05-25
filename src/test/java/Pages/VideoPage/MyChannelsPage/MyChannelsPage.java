@@ -1,5 +1,6 @@
 package Pages.VideoPage.MyChannelsPage;
 
+import Factories.VideoPageFactory;
 import Pages.VideoPage.ChannelPage;
 import Pages.VideoPage.IChannelPage;
 import Pages.VideoPage.VideoPage;
@@ -13,11 +14,11 @@ public class MyChannelsPage extends VideoPage implements IMyChannelsPage {
     }
     @Override
     public boolean isChannelDisplayed(String channelName) {
-        return isChannelCardDisplayed(channelName);
+        return isDisplayed(channelCard.getChannelXPath(channelName));
     }
     @Override
     public IChannelPage goToChannel(String channelName){
         click(channelCard.getChannelXPath(channelName));
-        return new ChannelPage(driver,channelName);
+        return VideoPageFactory.getChannelPage(driver);
     }
 }

@@ -3,6 +3,8 @@ package Wrappers;
 import Factories.LayerFactory;
 import Layers.*;
 import Pages.*;
+import Pages.FriendPage.MyFriendsPage;
+import Pages.FriendPage.IMyFriendsPage;
 import Pages.VideoPage.ITopVideoPage;
 import Pages.VideoPage.TopVideoPage;
 import org.openqa.selenium.By;
@@ -33,9 +35,9 @@ public class ToolBarWrapper extends BasePage {
         driver.findElement(NOTIFICAATIONS_BUTTON).click();
         return LayerFactory.getNotificationsLayer(driver);
     }
-    public IFriendsPage clickFriends(){
+    public IMyFriendsPage clickFriends(){
         driver.findElement(VIDEO_BUTTON).click();
-        return new FriendsPage(driver);
+        return new MyFriendsPage(driver);
     }
     public IGuestsPage clickGuests(){
         driver.findElement(VIDEO_BUTTON).click();

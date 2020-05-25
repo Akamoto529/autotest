@@ -27,7 +27,7 @@ public class AddVideoFromFileTest extends TestBase{
     public void testAddVideoFromFile() {
         Assert.assertTrue(videoPage.downloadVideoFromFile(PATH_TO_VIDEO)
                 .goToMyVideos()
-                .isVideoDisplayed(VIDEO_NAME));
+                .getVideoCard().isVideoDisplayed(VIDEO_NAME));
     }
 
     @AfterEach

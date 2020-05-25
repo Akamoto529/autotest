@@ -1,34 +1,34 @@
 package Pages;
 
 import Factories.PageFactory;
-import Pages.VideoPage.IFriendsVideoPage;
-import Wrappers.WithToolbar;
+import Pages.FriendPage.IUserPage;
 import org.openqa.selenium.By;
 import Wrappers.ToolBarWrapper;
 import org.openqa.selenium.WebDriver;
 
-public class UserPage extends BasePage implements IUserPage{
+public class MainPage extends BasePage implements IMainPage {
     private static final By ACCEPT_FRIENDSHIP_BUTTON = By.xpath(".//span[@data-l = 't,growl_link']");
-    private final ToolBarWrapper toolBar;
-    public UserPage(WebDriver driver) {
+    private final ToolBarWrapper toolbar;
+    public MainPage(WebDriver driver) {
         super(driver);
-        this.toolBar = new ToolBarWrapper(driver);
+        this.toolbar = new ToolBarWrapper(driver);
     }
-
+    @Override
     public ToolBarWrapper getToolBar() {
-        return toolBar;
+        return toolbar;
     }
 
-    public IFriendsVideoPage goToFriendVideo(String friendUrl) {
+    @Override
+    public IUserPage goToFriendPage(String friendUrl) {
         driver.get(friendUrl);
-        return PageFactory.getFriendVideoPage(driver);
+        return PageFactory.getUserPage(driver);
     }
 
     /*public FriendPage goToFriendPage(String friendUrl) {
         driver.get(friendUrl);
         return new FriendPage(driver);
     }*/
-    public UserPage acceptFriendship() {
+    public IMainPage acceptFriendship() {
         click(ACCEPT_FRIENDSHIP_BUTTON);
         return this;
     }

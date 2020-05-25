@@ -1,19 +1,17 @@
 package Pages.VideoPage;
 
-import Pages.FriendPage;
-import Pages.IVideoLayer;
-import Layers.IVideoLayer;
+import Pages.FriendPage.IUserPage;
 import Pages.VideoPage.MyChannelsPage.IMyChannelsPage;
+import Wrappers.WithToolbar;
+import Wrappers.WithVideoCard;
 
-public interface IVideoPage {
+public interface IVideoPage extends WithToolbar, WithVideoCard {
     IChannelPage createChannel(String name);
     IMyVideoPage downloadVideoByLink(String link);
     IMyVideoPage goToMyVideos();
     IMyChannelsPage goToMyChannels();
     IMyVideoHistoryPage goToMyHistory();
-    FriendPage addFriend(String friendUrl);
+    IUserPage addFriend(String friendUrl);
     void setVisibilityOfVideo(String text);
-    IVideoLayer clickOnVideo(String videoName);
-    boolean isVideoDisplayed(String videoByLinkName);
-    VideoPage downloadVideoFromFile(String pathToFile);
+    IMyVideoPage downloadVideoFromFile(String pathToFile);
 }

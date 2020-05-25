@@ -1,23 +1,24 @@
 package Factories;
 
-import Layers.IVideoLayer;
-import Layers.VideoLayer;
-import Pages.VideoPage.ChannelPage;
-import Pages.VideoPage.IChannelPage;
-import Pages.VideoPage.IMyVideoPage;
+import Pages.VideoPage.*;
 import Pages.VideoPage.MyChannelsPage.IMyChannelsPage;
 import Pages.VideoPage.MyChannelsPage.MyChannelsPage;
-import Pages.VideoPage.MyVideoPage;
 import org.openqa.selenium.WebDriver;
 
 public class VideoPageFactory {
-    public static IMyVideoPage getMyVideoPage(WebDriver driver){
+    public static IMyVideoPage getMyVideoPage(WebDriver driver) {
         return new MyVideoPage(driver);
     }
-    public static IChannelPage getChannelPage(WebDriver driver, String channelName){
-        return new ChannelPage(driver,channelName);
+
+    public static IChannelPage getChannelPage(WebDriver driver) {
+        return new ChannelPage(driver);
     }
-    public static IMyChannelsPage getMyChannelsPage(WebDriver driver){
+
+    public static IMyChannelsPage getMyChannelsPage(WebDriver driver) {
         return new MyChannelsPage(driver);
+    }
+
+    public static IMyVideoHistoryPage getMyVideoHistoryPage(WebDriver driver) {
+        return new MyVideoHistoryPage(driver);
     }
 }
