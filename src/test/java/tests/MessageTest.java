@@ -19,10 +19,5 @@ public class MessageTest extends TestBase {
                 .clickMessages(driver)
                 .clickUserChat(userName)
                 .typeMessage(message).checkLastMessage(message));
-        Assert.assertTrue(new LoginPage(driver)
-                .Login(bot.getLogin(), bot.getPassword())
-                .clickMessages(driver)
-                .clickUserChat(userName)
-                .typeMessage(message).checkLastMessage(message));
     }
 }

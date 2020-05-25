@@ -1,5 +1,6 @@
 package Pages.VideoPage;
 
+import Pages.FriendPage;
 import Pages.IVideoLayer;
 
 public interface IVideoPage {
@@ -8,6 +9,8 @@ public interface IVideoPage {
     IMyVideoPage goToMyVideos();
     IMyChannelsPage goToMyChannels();
     IMyVideoHistoryPage goToMyHistory();
+    FriendPage addFriend(String friendUrl);
+    void setVisibilityOfVideo(String text);
     IVideoLayer clickOnVideo(String videoName);
     boolean isVideoDisplayed(String videoByLinkName);
     boolean isChannelCardDisplayed(String channelName); //��������, ���������� � ����������� �� MyChannelPage

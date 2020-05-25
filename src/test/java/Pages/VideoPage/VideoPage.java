@@ -9,6 +9,8 @@ import Wrappers.WithVideoCard;
 import Wrappers.WithToolbar;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 public class VideoPage extends BasePage implements WithToolbar, WithChannelCard,WithVideoCard, IVideoPage {
 
@@ -29,7 +31,7 @@ public class VideoPage extends BasePage implements WithToolbar, WithChannelCard,
     public VideoPage(WebDriver driver) {
         super(driver);
         this.toolbar = new ToolBarWrapper(driver);
-        waitUntilPageLoad();
+        //waitUntilPageLoad();
     }
 
     @Override
@@ -42,6 +44,7 @@ public class VideoPage extends BasePage implements WithToolbar, WithChannelCard,
 
     @Override
     public VideoPage downloadVideoFromFile(String pathToFile)  {
+        waitUntilPageLoad();
         click(ADD_VIDEO_FROM_FILE_BUTTON);
         hardSleep();
         driver.findElement(FILE_INPUT).sendKeys(pathToFile);
@@ -86,10 +89,19 @@ public class VideoPage extends BasePage implements WithToolbar, WithChannelCard,
         click(getVideoCardByXPath(videoName));
         return PageFactory.getVideoLayer(driver);
     }
+
     public ToolBarWrapper getToolbar(){
         return this.toolbar;
     }
 
+    @Override
+    public void setVisibilityOfVideo(String text) {
+        hardSleep();
+        WebElement selectElem = driver.findElement(By.tagName("select"));
+        Select select = new Select(selectElem);
+        select.selectByVisibleText(text);
+        click(SUBMIT_BUTTON);
+    }
 
     public void waitUntilPageLoad() {
         waitUntilElementVisible(CONTENT_BLOCK);

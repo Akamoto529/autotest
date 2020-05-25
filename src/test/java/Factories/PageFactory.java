@@ -21,4 +21,7 @@ public class PageFactory {
     public static IMyVideoHistoryPage getMyVideoHistoryPage(WebDriver driver){
         return new MyVideoHistoryPage (driver);
     }
+    public static IFriendsVideoPage getFriendVideoPage(WebDriver driver){
+        return new FriendsVideoPage(driver);
+    }
 }

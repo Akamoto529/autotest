@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class BasePage {
-
+    private static final By ADD_FRIEND_BUTTON = By.xpath(".//a[text() = 'Добавить в друзья']");
     protected WebDriver driver;
 
     public BasePage(WebDriver driver) {
@@ -63,5 +63,10 @@ public abstract class BasePage {
     protected void moveToElementAndClick(By move, By click) {
         Actions action = new Actions(driver);
         action.moveToElement(driver.findElement(move)).pause(1).click(driver.findElement(click)).build().perform();
+    }
+    public FriendPage addFriend(String friendUrl) {
+        driver.get(friendUrl);
+        click(ADD_FRIEND_BUTTON);
+        return new FriendPage(driver);
     }
 }
