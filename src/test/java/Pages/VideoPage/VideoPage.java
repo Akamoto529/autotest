@@ -19,7 +19,6 @@ public class VideoPage extends BasePage implements IVideoPage {
     protected static final By SUBMIT_BUTTON = By.xpath(".//input[@type = 'submit']");
     private static final By ADD_VIDEO_BY_LINK_BUTTON = By.xpath(".//a[contains(@hrefattrs,'AddVideoByLink')]");
     private static final By LINK_NAME_INPUT_FIELD = By.xpath(".//div[@class = 'video-link-grabber']//child::input[@type = 'text']");
-    private static final By DELETE_VIDEO_BUTTON = By.xpath(".//a[@data-l = 't,delete']");
     private static final By ADD_VIDEO_FROM_FILE_BUTTON = By.xpath(".//a[contains(@href,'/video/manager')]");
     private static final By FILE_INPUT = By.xpath(".//input[@type = 'file']");
     private static final By GO_TO_EDIT_BUTTON = By.xpath(".//a[contains(@class,'go-to-editor')]");
@@ -46,14 +45,15 @@ public class VideoPage extends BasePage implements IVideoPage {
     }
 
     @Override
-    public IMyVideoPage downloadVideoFromFile(String pathToFile)  {
+    public IRedactVideoPage downloadVideoFromFile(String pathToFile)  {
         waitUntilPageLoad();
         click(ADD_VIDEO_FROM_FILE_BUTTON);
         hardSleep();
         driver.findElement(FILE_INPUT).sendKeys(pathToFile);
         waitUntilElementClickable(GO_TO_EDIT_BUTTON);
         click(GO_TO_EDIT_BUTTON);
-        return VideoPageFactory.getMyVideoPage(driver);
+        hardSleep();
+        return VideoPageFactory.getRedactVideoPage(driver);
     }
     @Override
     public IMyVideoPage downloadVideoByLink(String link) {
@@ -78,16 +78,6 @@ public class VideoPage extends BasePage implements IVideoPage {
         driver.get("https://ok.ru/video/history");
         return VideoPageFactory.getMyVideoHistoryPage(driver);
     }
-
-    @Override
-    public void setVisibilityOfVideo(String text) {
-        hardSleep();
-        WebElement selectElem = driver.findElement(By.tagName("select"));
-        Select select = new Select(selectElem);
-        select.selectByVisibleText(text);
-        click(SUBMIT_BUTTON);
-    }
-
     @Override
     public VideoCardWrapper getVideoCard(){
         return videoCard;

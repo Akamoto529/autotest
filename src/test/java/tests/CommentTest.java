@@ -1,8 +1,14 @@
 package tests;
 
 import Layers.IVideoLayer;
+import Layers.VideoLayer;
 import Pages.LoginPage;
+import Pages.VideoPage.IMyVideoPage;
+import Pages.VideoPage.IVideoPage;
+import Pages.VideoPage.MyVideoPage;
+import Pages.VideoPage.VideoPage;
 import Wrappers.Accounts.Bot;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testng.Assert;
@@ -10,21 +16,30 @@ import org.testng.Assert;
 public class CommentTest extends TestBase{
     private final String VIDEO_NAME = "Cats and Domino";
     private final String COMMENT_TEXT = "TestCommentary";
-    private final Bot bot = new Bot("technopolisbot1","technopolis16");
+    private final String PATH_TO_VIDEO = "C:\\Cats and Domino.mp4";
+    private final Bot bot = new Bot("TechoBot7","TechnoPolis19");
+    private IMyVideoPage myVideoPage;
     private IVideoLayer videoLayer;
     @BeforeEach
     private void before(){
-        videoLayer = new LoginPage(driver)
-                    .Login(bot.getLogin(), bot.getPassword())
-                    .getToolBar().clickVideo()
-                    .goToMyVideos()
-                    .getVideoCard().clickOnVideo(VIDEO_NAME);
+        myVideoPage = new LoginPage(driver).Login(bot.getLogin(), bot.getPassword())
+                .getToolBar().clickVideo()
+                .goToMyVideos()
+                .downloadVideoFromFile(PATH_TO_VIDEO)
+                .acceptRedacting();
     }
 
     @Test
-    public void testAddVideoByLink() {
-        videoLayer.typeComment(COMMENT_TEXT);
-        Assert.assertTrue(videoLayer.isCommentDisplayed(COMMENT_TEXT));
+    public void testCommentSending() {
+        videoLayer = new MyVideoPage(driver).getVideoCard().clickOnVideo(VIDEO_NAME);
+        Assert.assertTrue(videoLayer
+                .typeComment(COMMENT_TEXT)
+                .isCommentDisplayed(COMMENT_TEXT));
     }
 
+    @AfterEach
+    public void after() {
+        videoLayer.deleteComment(COMMENT_TEXT);
+        myVideoPage.goToMyVideos().deleteVideo(VIDEO_NAME);
+    }
 }

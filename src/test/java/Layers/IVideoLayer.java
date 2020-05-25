@@ -7,4 +7,5 @@ public interface IVideoLayer {
     boolean isCommentDisplayed(String text);
     void closeVideo ();
     IVideoLayer waitToGetInHistory();
+    IVideoLayer deleteComment(String text);
 }

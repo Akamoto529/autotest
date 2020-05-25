@@ -21,4 +21,9 @@ public class VideoPageFactory {
     public static IMyVideoHistoryPage getMyVideoHistoryPage(WebDriver driver) {
         return new MyVideoHistoryPage(driver);
     }
+
+    public static IRedactVideoPage getRedactVideoPage(WebDriver driver) {
+        return new RedactVideoPage(driver);
+    }
+
 }

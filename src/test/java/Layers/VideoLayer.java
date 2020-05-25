@@ -10,7 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 public class VideoLayer extends BasePage implements WithCommentaries, IVideoLayer {
     private static final By COMMENT_INPUT_FIELD = By.xpath(".//div[@class = 'comments_add-itx']//child::div[contains(@id,'field_dM')]");
     private static final By SUBMIT_COMMENT_BUTTON = By.xpath(".//button[@data-l = 't,submit']");
-    private static final By CLOSE_VIDEO_BUTTON = By.xpath(".//div[@class = 'media-layer_close']");
+    private static final By DELETE_COMMENT_BUTTON = By.xpath(".//a[contains(@class,'comments_remove')]");
     public VideoLayer(WebDriver driver){
         super(driver);
     }
@@ -29,7 +29,6 @@ public class VideoLayer extends BasePage implements WithCommentaries, IVideoLaye
 
     @Override
     public void closeVideo () {
-        //click(CLOSE_VIDEO_BUTTON);
         Actions action = new Actions(driver);
         action.moveByOffset(0,0).click();
     }
@@ -37,6 +36,12 @@ public class VideoLayer extends BasePage implements WithCommentaries, IVideoLaye
     @Override
     public IVideoLayer waitToGetInHistory () {
         hardSleep();
+        return this;
+    }
+
+    @Override
+    public IVideoLayer deleteComment(String text) {
+        moveToElementAndClick(getCommentary(text),DELETE_COMMENT_BUTTON);
         return this;
     }
 }

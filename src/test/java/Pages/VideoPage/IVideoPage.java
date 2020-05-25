@@ -11,7 +11,5 @@ public interface IVideoPage extends WithToolbar, WithVideoCard {
     IMyVideoPage goToMyVideos();
     IMyChannelsPage goToMyChannels();
     IMyVideoHistoryPage goToMyHistory();
-    IUserPage addFriend(String friendUrl);
-    void setVisibilityOfVideo(String text);
-    IMyVideoPage downloadVideoFromFile(String pathToFile);
+    IRedactVideoPage downloadVideoFromFile(String pathToFile);
 }
