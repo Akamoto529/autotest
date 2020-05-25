@@ -6,6 +6,7 @@ import org.openqa.selenium.interactions.Actions;
 
 public class MyVideoPage extends VideoPage implements IMyVideoPage{
     private static final By DELETE_VIDEO_BUTTON = By.xpath(".//a[@data-l = 't,delete']");
+    private static final By VIDEO_CARD = By.xpath(".//div[@class = 'video-card_play']");
 
     public MyVideoPage(WebDriver driver){
         super(driver);
@@ -13,11 +14,9 @@ public class MyVideoPage extends VideoPage implements IMyVideoPage{
 
     @Override
     public IMyVideoPage deleteVideo(String name) {
-        click(getVideoCardByXPath(name));
-        Actions action = new Actions(driver);
-        action.moveToElement(driver.findElement(getVideoCardByXPath(name))).pause(1).click(driver.findElement(DELETE_VIDEO_BUTTON)).build().perform();
-        //        //click(deleteVideoButton);
+        moveToElementAndClick(VIDEO_CARD, DELETE_VIDEO_BUTTON);
         click(SUBMIT_BUTTON);
         return this;
     }
+
 }

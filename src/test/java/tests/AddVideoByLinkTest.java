@@ -3,6 +3,7 @@ package tests;
 import Pages.LoginPage;
 import Pages.VideoPage.IMyVideoPage;
 import Wrappers.Accounts.Bot;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testng.Assert;
@@ -24,6 +25,10 @@ public class AddVideoByLinkTest extends TestBase{
     public void testAddVideoByLink() {
         Assert.assertTrue(myVideoPage.downloadVideoByLink(VIDEO_LINK)
                 .isVideoDisplayed(VIDEO_NAME));
+
+    }
+    @AfterEach
+    private void after() {
         myVideoPage.deleteVideo(VIDEO_NAME);
     }
 }

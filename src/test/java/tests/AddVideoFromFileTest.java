@@ -2,8 +2,10 @@ package tests;
 
 import Pages.LoginPage;
 import Pages.VideoPage.IMyVideoPage;
+import Pages.VideoPage.IVideoPage;
 import Pages.VideoPage.VideoPage;
 import Wrappers.Accounts.Bot;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testng.Assert;
@@ -22,10 +24,14 @@ public class AddVideoFromFileTest extends TestBase{
     }
 
     @Test
-    public void testAddVideoByLink() {
+    public void testAddVideoFromFile() {
         Assert.assertTrue(videoPage.downloadVideoFromFile(PATH_TO_VIDEO)
                 .goToMyVideos()
                 .isVideoDisplayed(VIDEO_NAME));
-        videoPage.deleteVideo(VIDEO_NAME);
+    }
+
+    @AfterEach
+    private void after() {
+        videoPage.goToMyVideos().deleteVideo(VIDEO_NAME);
     }
 }
