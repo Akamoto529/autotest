@@ -2,6 +2,7 @@ package tests;
 
 import Pages.LoginPage;
 import Pages.VideoPage.*;
+import Pages.VideoPage.MyChannelsPage.IMyChannelsPage;
 import Wrappers.Accounts.Bot;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -22,10 +23,8 @@ public class CreateChannelTest extends TestBase {
 
     @Test
     public void testChannelCreation() {
-        videoPage.createChannel(CHANNEL_NAME);
-        Assertions.assertTrue(videoPage
-                .goToMyChannels()
-                .isChannelDisplayed(CHANNEL_NAME));
+        IMyChannelsPage myChannelsPage = videoPage.createChannel(CHANNEL_NAME).goToMyChannels();
+        Assertions.assertTrue(myChannelsPage.isChannelDisplayed(CHANNEL_NAME));
     }
 
     @AfterEach

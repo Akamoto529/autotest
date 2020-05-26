@@ -1,5 +1,5 @@
 package Pages.VideoPage;
 
-public interface IMyVideoHistoryPage extends IVideoPage{
+public interface IMyVideoHistoryPage extends IVideoPage {
     IMyVideoHistoryPage cleanHistory();
 }

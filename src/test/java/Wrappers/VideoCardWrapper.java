@@ -10,18 +10,22 @@ public class VideoCardWrapper {
 
     private final WebDriver driver;
     private final WebElement videoCard;
-    public VideoCardWrapper(WebDriver driver, WebElement videoCard){
+
+    public VideoCardWrapper(WebDriver driver, WebElement videoCard) {
         this.driver = driver;
         this.videoCard = videoCard;
     }
-    public VideoCardWrapper(WebDriver driver, String videoName){
+
+    public VideoCardWrapper(WebDriver driver, String videoName) {
         this.driver = driver;
-        this.videoCard = this.driver.findElement(By.xpath(".//div[@class = 'video-card_n-w']//child::a[@title = '"+videoName+"']"));
+        this.videoCard = this.driver.findElement(By.xpath(".//div[@class = 'video-card_n-w']//child::a[@title = '" + videoName + "']"));
     }
+
     public boolean isVideoDisplayed() {
         return videoCard.isDisplayed();
     }
-    public IVideoLayer clickOnVideo(){
+
+    public IVideoLayer clickOnVideo() {
         videoCard.click();
         return LayerFactory.getVideoLayer(driver);
     }

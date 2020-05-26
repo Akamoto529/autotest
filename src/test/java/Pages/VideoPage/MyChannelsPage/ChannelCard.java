@@ -9,7 +9,7 @@ public class ChannelCard extends BasePage {
         super(driver);
     }
 
-    public By getChannelXPath(String name){
-        return By.xpath(".//a[contains(@data-l,'clickDetails,title') and text() = '"+name+"']");
+    public By getChannelXPath(String name) {
+        return By.xpath(".//a[contains(@data-l,'clickDetails,title') and text() = '" + name + "']");
     }
 }

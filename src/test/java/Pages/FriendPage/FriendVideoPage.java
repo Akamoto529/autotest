@@ -8,8 +8,9 @@ public class FriendVideoPage extends VideoPage implements IFriendVideoPage {
     public FriendVideoPage(WebDriver driver) {
         super(driver);
     }
+
     @Override
-    public VideoCardWrapper getVideoCard(String videoName){
+    public VideoCardWrapper getVideoCard(String videoName) {
         return new VideoCardWrapper(driver, videoName);
     }
 }

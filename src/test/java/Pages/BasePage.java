@@ -1,13 +1,13 @@
 package Pages;
 
-import Pages.FriendPage.UserPage;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class BasePage {
-    private static final By ADD_FRIEND_BUTTON = By.xpath(".//a[text() = 'Добавить в друзья']");
     protected WebDriver driver;
 
     public BasePage(WebDriver driver) {
@@ -55,8 +55,7 @@ public abstract class BasePage {
     protected void hardSleep() {
         try {
             Thread.sleep(10000);
-        }
-        catch (InterruptedException e) {
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
@@ -68,6 +67,6 @@ public abstract class BasePage {
 
     protected void clickOnOffset(int xOffset, int yOffset) {
         Actions action = new Actions(driver);
-        action.moveByOffset(xOffset,yOffset).click();
+        action.moveByOffset(xOffset, yOffset).click();
     }
 }

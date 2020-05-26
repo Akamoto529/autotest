@@ -2,5 +2,5 @@ package Wrappers;
 
 
 public interface WithVideoCard {
-        VideoCardWrapper getVideoCard(String videoName);
+    VideoCardWrapper getVideoCard(String videoName);
 }

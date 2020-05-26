@@ -24,7 +24,11 @@ public class CheckVideoHistoryTest extends TestBase {
     }
     @Test
     public void testCheckVideoHistoryTest () {
-        myVideoPage.goToMyVideos().getVideoCard(VIDEO_NAME).clickOnVideo().waitToGetInHistory().closeVideo();
+        myVideoPage.goToMyVideos()
+                .getVideoCard(VIDEO_NAME)
+                .clickOnVideo()
+                .waitToGetInHistory()
+                .closeVideo();
         myVideoHistoryPage = myVideoPage.goToMyHistory();
         Assert.assertTrue(myVideoHistoryPage.getVideoCard(VIDEO_NAME).isVideoDisplayed());
     }

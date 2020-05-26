@@ -1,11 +1,14 @@
 package Layers;
 
 
-
 public interface IVideoLayer {
     IVideoLayer typeComment(String text);
+
     boolean isCommentDisplayed(String text);
-    void closeVideo ();
+
+    void closeVideo();
+
     IVideoLayer waitToGetInHistory();
+
     IVideoLayer deleteComment(String text);
 }

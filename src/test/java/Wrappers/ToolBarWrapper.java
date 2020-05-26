@@ -24,36 +24,42 @@ public class ToolBarWrapper {
     WebDriver driver;
     WebElement toolbar;
 
-    public ToolBarWrapper(WebDriver driver){
+    public ToolBarWrapper(WebDriver driver) {
         this.driver = driver;
         this.toolbar = driver.findElement(TOOLBAR_LOCATOR);
     }
-    public ToolBarWrapper(WebDriver driver, WebElement toolbar){
+
+    public ToolBarWrapper(WebDriver driver, WebElement toolbar) {
         this.driver = driver;
         this.toolbar = toolbar;
     }
 
-    public IChatLayer clickMessages(){
+    public IChatLayer clickMessages() {
         toolbar.findElement(MESSAGES_BUTTON).click();
         return LayerFactory.getChatLayer(driver);
     }
-    public IConversationsLayer clickConversations(){
+
+    public IConversationsLayer clickConversations() {
         toolbar.findElement(CONVERSATIONS_BUTTON).click();
         return LayerFactory.getConversationsLayer(driver);
     }
-    public INotificationsLayer clickNotifications(){
+
+    public INotificationsLayer clickNotifications() {
         toolbar.findElement(NOTIFICATIONS_BUTTON).click();
         return LayerFactory.getNotificationsLayer(driver);
     }
-    public IMyFriendsPage clickFriends(){
+
+    public IMyFriendsPage clickFriends() {
         toolbar.findElement(FRIENDS_BUTTON).click();
         return new MyFriendsPage(driver);
     }
-    public IGuestsPage clickGuests(){
+
+    public IGuestsPage clickGuests() {
         toolbar.findElement(GUESTS_BUTTON).click();
         return new GuestsPage(driver);
     }
-    public ITopVideoPage clickVideo(){
+
+    public ITopVideoPage clickVideo() {
         toolbar.findElement(VIDEO_BUTTON).click();
         return new TopVideoPage(driver);
     }

@@ -9,7 +9,7 @@ public class ChatLayer extends BasePage implements IChatLayer {
     private static final By TEXT_INPUT_FIELD = By.xpath(".//div[@data-placeholder='Напишите сообщение']");
     private static final By SEND_BUTTON = By.xpath(".//button[@title='Отправить' ]");
 
-    public ChatLayer(WebDriver driver){
+    public ChatLayer(WebDriver driver) {
         super(driver);
     }
 
@@ -21,7 +21,7 @@ public class ChatLayer extends BasePage implements IChatLayer {
     }
 
     @Override
-    public ChatMessageWrapper getChatMessage(String messageText){
+    public ChatMessageWrapper getChatMessage(String messageText) {
         return new ChatMessageWrapper(driver, messageText);
     }
 }

@@ -1,9 +1,9 @@
 package tests;
 
 import Pages.LoginPage;
-import Pages.VideoPage.ChannelPage;
 import Pages.VideoPage.IChannelPage;
 import Pages.VideoPage.IVideoPage;
+import Pages.VideoPage.MyChannelsPage.IMyChannelsPage;
 import Pages.VideoPage.VideoPage;
 import Wrappers.Accounts.Bot;
 import org.junit.jupiter.api.AfterEach;
@@ -28,10 +28,8 @@ public class ChangeChannelNameTest extends TestBase {
 
     @Test
     public void testChannelChange() {
-        channelPage.changeChannelName(NEW_CHANNEL_NAME);
-        Assertions.assertTrue(channelPage
-                .goToMyChannels()
-                .isChannelDisplayed(NEW_CHANNEL_NAME));
+        IMyChannelsPage myChannelsPage = channelPage.changeChannelName(NEW_CHANNEL_NAME).goToMyChannels();
+        Assertions.assertTrue(myChannelsPage.isChannelDisplayed(NEW_CHANNEL_NAME));
     }
 
     @AfterEach

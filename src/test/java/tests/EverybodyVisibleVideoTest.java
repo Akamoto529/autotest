@@ -11,20 +11,22 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
-public class EverybodyVisibleVideoTest extends TestBase{
+public class EverybodyVisibleVideoTest extends TestBase {
     private final static String PATH_TO_VIDEO = "C:\\Cats and Domino.mp4";
     private final static String VIDEO_NAME = "Cats and Domino";
     private final static String BOT1_URL = "https://ok.ru/profile/585773894922";
-    private final static Bot bot1 = new Bot("technopolisbot1","technopolis16");
-    private final static Bot bot2 = new Bot("TechoBot7","TechnoPolis19");
+    private final static Bot bot1 = new Bot("technopolisbot1", "technopolis16");
+    private final static Bot bot2 = new Bot("TechoBot7", "TechnoPolis19");
     private IVideoPage videoPage;
     private IFriendVideoPage friendVideoPage;
-   @BeforeEach
-    private void before(){
+
+    @BeforeEach
+    private void before() {
         videoPage = new LoginPage(driver)
                 .Login(bot1.getLogin(), bot1.getPassword())
-                .getToolBar().clickVideo();
-        videoPage.downloadVideoFromFile(PATH_TO_VIDEO).acceptRedacting();
+                .getToolBar().clickVideo()
+                .downloadVideoFromFile(PATH_TO_VIDEO)
+                .acceptRedacting();
     }
 
     @Test
@@ -32,14 +34,17 @@ public class EverybodyVisibleVideoTest extends TestBase{
         WebDriver newDriver = new ChromeDriver();
         newDriver.get("https://ok.ru/");
         friendVideoPage = new LoginPage(newDriver)
-                .Login(bot2.getLogin(), bot2.getPassword()).goToFriendPage(BOT1_URL).goToFriendVideo();
+                .Login(bot2.getLogin(), bot2.getPassword())
+                .goToFriendPage(BOT1_URL)
+                .goToFriendVideo();
         Assert.assertFalse(friendVideoPage.getVideoCard(VIDEO_NAME).isVideoDisplayed());
         newDriver.quit();
     }
 
     @AfterEach
     public void after() {
-       videoPage.goToMyVideos().deleteVideo(VIDEO_NAME);
+        videoPage.goToMyVideos()
+                .deleteVideo(VIDEO_NAME);
     }
 
 }

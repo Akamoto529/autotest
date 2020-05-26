@@ -1,12 +1,9 @@
 package tests;
 
 import Layers.IVideoLayer;
-import Layers.VideoLayer;
 import Pages.LoginPage;
 import Pages.VideoPage.IMyVideoPage;
-import Pages.VideoPage.IVideoPage;
 import Pages.VideoPage.MyVideoPage;
-import Pages.VideoPage.VideoPage;
 import Wrappers.Accounts.Bot;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -31,9 +28,11 @@ public class CommentTest extends TestBase{
 
     @Test
     public void testCommentSending() {
-        videoLayer = new MyVideoPage(driver).getVideoCard(VIDEO_NAME).clickOnVideo().typeComment(COMMENT_TEXT);
-        Assert.assertTrue(videoLayer
-                .isCommentDisplayed(COMMENT_TEXT));
+        videoLayer = new MyVideoPage(driver)
+                .getVideoCard(VIDEO_NAME)
+                .clickOnVideo()
+                .typeComment(COMMENT_TEXT);
+        Assert.assertTrue(videoLayer.isCommentDisplayed(COMMENT_TEXT));
     }
 
     @AfterEach

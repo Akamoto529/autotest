@@ -11,7 +11,7 @@ public class ChannelPage extends VideoPage implements IChannelPage {
     private static final By channelNameInputField = By.xpath(".//input[@id = 'field_albName']");
     private static final By submitButton = By.xpath(".//input[@type = 'submit']");
 
-    public ChannelPage(WebDriver driver){
+    public ChannelPage(WebDriver driver) {
         super(driver);
     }
 

@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 public class MyFriendsPage extends BasePage implements IMyFriendsPage {
 
-    public MyFriendsPage(WebDriver driver){
+    public MyFriendsPage(WebDriver driver) {
         super(driver);
     }
 }
