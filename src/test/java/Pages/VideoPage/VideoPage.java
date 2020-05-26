@@ -1,16 +1,12 @@
 package Pages.VideoPage;
 
-import Factories.PageFactory;
 import Factories.VideoPageFactory;
 import Pages.BasePage;
 import Pages.VideoPage.MyChannelsPage.IMyChannelsPage;
-import Pages.VideoPage.MyChannelsPage.MyChannelsPage;
 import Wrappers.ToolBarWrapper;
 import Wrappers.VideoCardWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 
 public class VideoPage extends BasePage implements IVideoPage {
 

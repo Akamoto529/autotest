@@ -15,7 +15,6 @@ public class ChangeChannelNameTest extends TestBase {
     private final String CHANNEL_NAME = "TestName";
     private final String NEW_CHANNEL_NAME = "ChangedTestName";
     private final Bot bot = new Bot("technopolisbot1","technopolis16");
-    private IVideoPage videoPage;
     private IChannelPage channelPage;
     @BeforeEach
     private void before(){
