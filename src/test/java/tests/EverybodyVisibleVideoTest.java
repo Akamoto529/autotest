@@ -12,11 +12,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
 public class EverybodyVisibleVideoTest extends TestBase{
-    private final String PATH_TO_VIDEO = "C:\\Cats and Domino.mp4";
-    private final String VIDEO_NAME = "Cats and Domino";
-    private final String BOT1_URL = "https://ok.ru/profile/585773894922";
-    private final Bot bot1 = new Bot("technopolisbot1","technopolis16");
-    private final Bot bot2 = new Bot("TechoBot7","TechnoPolis19");
+    private final static String PATH_TO_VIDEO = "C:\\Cats and Domino.mp4";
+    private final static String VIDEO_NAME = "Cats and Domino";
+    private final static String BOT1_URL = "https://ok.ru/profile/585773894922";
+    private final static Bot bot1 = new Bot("technopolisbot1","technopolis16");
+    private final static Bot bot2 = new Bot("TechoBot7","TechnoPolis19");
     private IVideoPage videoPage;
     private IFriendVideoPage friendVideoPage;
    @BeforeEach

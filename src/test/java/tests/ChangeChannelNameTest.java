@@ -12,22 +12,24 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class ChangeChannelNameTest extends TestBase {
-    private final String CHANNEL_NAME = "TestName";
-    private final String NEW_CHANNEL_NAME = "ChangedTestName";
-    private final Bot bot = new Bot("technopolisbot1","technopolis16");
+    private final static String CHANNEL_NAME = "TestName";
+    private final static String NEW_CHANNEL_NAME = "ChangedTestName";
+    private final static Bot bot = new Bot("technopolisbot1", "technopolis16");
     private IVideoPage videoPage;
     private IChannelPage channelPage;
+
     @BeforeEach
-    private void before(){
+    private void before() {
         channelPage = new LoginPage(driver)
                 .Login(bot.getLogin(), bot.getPassword())
                 .getToolBar().clickVideo()
                 .createChannel(CHANNEL_NAME);
     }
+
     @Test
     public void testChannelChange() {
+        channelPage.changeChannelName(NEW_CHANNEL_NAME);
         Assertions.assertTrue(channelPage
-                .changeChannelName(NEW_CHANNEL_NAME)
                 .goToMyChannels()
                 .isChannelDisplayed(NEW_CHANNEL_NAME));
     }
@@ -35,5 +37,5 @@ public class ChangeChannelNameTest extends TestBase {
     @AfterEach
     public void after() {
         new VideoPage(driver).goToMyChannels().goToChannel(NEW_CHANNEL_NAME).deleteChannel();
-}
+    }
 }
