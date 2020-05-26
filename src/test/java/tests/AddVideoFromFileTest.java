@@ -15,7 +15,7 @@ public class AddVideoFromFileTest extends TestBase {
     private IMyVideoPage videoPage;
 
     @BeforeEach
-    private void before() {
+    void before() {
         videoPage = new LoginPage(driver)
                 .Login(bot.getLogin(), bot.getPassword())
                 .getToolBar().clickVideo()
@@ -30,7 +30,7 @@ public class AddVideoFromFileTest extends TestBase {
     }
 
     @AfterEach
-    private void after() {
+    void after() {
         videoPage.goToMyVideos()
                 .deleteVideo(VIDEO_NAME);
     }

@@ -24,7 +24,7 @@ public class TestBase {
         stop();
     }
 
-    public void init() {
+    private void init() {
         driver = new ChromeDriver();
         baseUrl = "https://ok.ru/";
         e_driver = new EventFiringWebDriver(driver);
@@ -34,7 +34,7 @@ public class TestBase {
         e_driver.get(baseUrl + "/");
     }
 
-    public void stop() {
+    private void stop() {
         driver.quit();
     }
 }

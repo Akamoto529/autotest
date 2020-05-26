@@ -14,7 +14,7 @@ public class DeleteChannelTest extends TestBase {
     private IChannelPage channelPage;
 
     @BeforeEach
-    private void before() {
+    void before() {
         channelPage = new LoginPage(driver)
                 .Login(bot.getLogin(), bot.getPassword())
                 .getToolBar().clickVideo()
@@ -22,7 +22,7 @@ public class DeleteChannelTest extends TestBase {
     }
 
     @Test
-    public void testChannelDeletion() {
+    void testChannelDeletion() {
         IMyChannelsPage myChannelsPage = channelPage.deleteChannel().goToMyChannels();
         Assertions.assertFalse(myChannelsPage.isChannelDisplayed(CHANNEL_NAME));
     }

@@ -18,7 +18,7 @@ public class CommentTest extends TestBase{
     private IMyVideoPage myVideoPage;
     private IVideoLayer videoLayer;
     @BeforeEach
-    private void before(){
+    void before(){
         myVideoPage = new LoginPage(driver).Login(bot.getLogin(), bot.getPassword())
                 .getToolBar().clickVideo()
                 .goToMyVideos()
@@ -36,7 +36,7 @@ public class CommentTest extends TestBase{
     }
 
     @AfterEach
-    public void after() {
+    void after() {
         videoLayer.deleteComment(COMMENT_TEXT);
         myVideoPage.goToMyVideos().deleteVideo(VIDEO_NAME);
     }

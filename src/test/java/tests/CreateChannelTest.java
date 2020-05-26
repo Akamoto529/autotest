@@ -15,7 +15,7 @@ public class CreateChannelTest extends TestBase {
     private IVideoPage videoPage;
 
     @BeforeEach
-    private void before() {
+    void before() {
         videoPage = new LoginPage(e_driver)
                 .Login(bot.getLogin(), bot.getPassword())
                 .getToolBar().clickVideo();
@@ -28,7 +28,7 @@ public class CreateChannelTest extends TestBase {
     }
 
     @AfterEach
-    public void after() {
+    void after() {
         new VideoPage(driver).goToMyChannels().goToChannel(CHANNEL_NAME).deleteChannel();
     }
 }

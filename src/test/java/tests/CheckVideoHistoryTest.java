@@ -16,7 +16,7 @@ public class CheckVideoHistoryTest extends TestBase {
     private IMyVideoPage myVideoPage;
     private IMyVideoHistoryPage myVideoHistoryPage;
     @BeforeEach
-    private void before(){
+    void before(){
         myVideoPage = new LoginPage(driver).Login(bot.getLogin(), bot.getPassword())
                 .getToolBar().clickVideo()
                 .goToMyVideos()
@@ -33,7 +33,7 @@ public class CheckVideoHistoryTest extends TestBase {
         Assert.assertTrue(myVideoHistoryPage.getVideoCard(VIDEO_NAME).isVideoDisplayed());
     }
    @AfterEach
-    private void after(){
+    void after(){
         myVideoHistoryPage.cleanHistory();
         myVideoPage.goToMyVideos().deleteVideo(VIDEO_NAME);
     }

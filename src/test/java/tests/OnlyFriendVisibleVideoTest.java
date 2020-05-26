@@ -21,7 +21,7 @@ public class OnlyFriendVisibleVideoTest extends TestBase {
     private IFriendVideoPage friendVideoPage;
 
     @BeforeEach
-    private void before() {
+    void before() {
         videoPage = new LoginPage(driver)
                 .Login(bot1.getLogin(), bot1.getPassword())
                 .getToolBar().clickVideo();
@@ -43,7 +43,7 @@ public class OnlyFriendVisibleVideoTest extends TestBase {
     }
 
     @AfterEach
-    private void after() {
+    void after() {
         videoPage.goToMyVideos()
                 .deleteVideo(VIDEO_NAME);
     }

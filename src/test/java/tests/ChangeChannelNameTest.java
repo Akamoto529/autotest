@@ -19,7 +19,7 @@ public class ChangeChannelNameTest extends TestBase {
     private IChannelPage channelPage;
 
     @BeforeEach
-    private void before() {
+    void before() {
         channelPage = new LoginPage(driver)
                 .Login(bot.getLogin(), bot.getPassword())
                 .getToolBar().clickVideo()
@@ -33,7 +33,7 @@ public class ChangeChannelNameTest extends TestBase {
     }
 
     @AfterEach
-    public void after() {
+    void after() {
         new VideoPage(driver).goToMyChannels().goToChannel(NEW_CHANNEL_NAME).deleteChannel();
     }
 }

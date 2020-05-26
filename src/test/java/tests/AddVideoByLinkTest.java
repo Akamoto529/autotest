@@ -15,7 +15,7 @@ public class AddVideoByLinkTest extends TestBase {
     private IMyVideoPage myVideoPage;
 
     @BeforeEach
-    private void before() {
+    void before() {
         myVideoPage = new LoginPage(driver)
                 .Login(bot.getLogin(), bot.getPassword())
                 .getToolBar().clickVideo()
@@ -25,11 +25,11 @@ public class AddVideoByLinkTest extends TestBase {
     @Test
     public void testAddVideoByLink() {
         myVideoPage.downloadVideoByLink(VIDEO_LINK);
-        Assert.assertTrue(myVideoPage.getVideoCard(VIDEO_LINK).isVideoDisplayed());
+        Assert.assertTrue(myVideoPage.getVideoCard(VIDEO_NAME).isVideoDisplayed());
     }
 
     @AfterEach
-    private void after() {
+    void after() {
         myVideoPage.goToMyVideos()
                 .deleteVideo(VIDEO_NAME);
     }
