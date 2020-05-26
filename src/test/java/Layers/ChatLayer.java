@@ -1,6 +1,7 @@
 package Layers;
 
 import Pages.BasePage;
+import Wrappers.ChatMessageWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -8,8 +9,11 @@ public class ChatLayer extends BasePage implements IChatLayer {
     private static final By TEXT_INPUT_FIELD = By.xpath(".//div[@data-placeholder='Напишите сообщение']");
     private static final By SEND_BUTTON = By.xpath(".//button[@title='Отправить' ]");
 
+    ChatMessageWrapper chatMessage;
+
     public ChatLayer(WebDriver driver){
         super(driver);
+        this.chatMessage = new ChatMessageWrapper(driver);
     }
 
     @Override
@@ -26,7 +30,7 @@ public class ChatLayer extends BasePage implements IChatLayer {
     }
 
     @Override
-    public boolean checkLastMessage(String text) {
-        return isPresent(By.xpath(".//div[@class='msg js-msg soh-s __me __private __collapsed __last']//span[text() = '" + text + "']"));
+    public ChatMessageWrapper getChatMessage(){
+        return chatMessage;
     }
 }

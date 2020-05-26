@@ -1,7 +1,8 @@
 package Layers;
 
-public interface IChatLayer {
+import Wrappers.WithChat;
+
+public interface IChatLayer extends WithChat {
     IChatLayer clickUserChat(String userName);
     IChatLayer typeMessage(String message);
-    boolean checkLastMessage(String text);
 }
