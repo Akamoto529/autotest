@@ -14,7 +14,7 @@ public class CreateChannelTest extends TestBase {
     private IVideoPage videoPage;
     @BeforeEach
     private void before(){
-        videoPage = new LoginPage(driver)
+        videoPage = new LoginPage(e_driver)
                 .Login(bot.getLogin(), bot.getPassword())
                 .getToolBar().clickVideo();
     }
