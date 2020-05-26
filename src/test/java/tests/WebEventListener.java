@@ -4,32 +4,41 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.AbstractWebDriverEventListener;
 
-import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class WebEventListener extends AbstractWebDriverEventListener {
-    FileOutputStream fos;
+    FileWriter fw;
     public WebEventListener () {
-        //fos = new FileOutputStream("C:\\log.txt");
+        try {
+            fw = new FileWriter("log.txt", false);
+        } catch(IOException e){}
     }
     @Override
     public void beforeNavigateTo(String url, WebDriver driver) {
-        System.out.println("Before navigating to: '" + url + "'");
+        writeLine("Before navigating to: '" + url + "'");
     }
     @Override
     public void afterNavigateTo(String url, WebDriver driver) {
-        System.out.println("Navigated to:'" + url + "'");
+        writeLine("Navigated to:'" + url + "'");
     }
     @Override
     public void beforeClickOn(WebElement element, WebDriver driver) {
-        System.out.println("Trying to click on: " + element.toString());
+        writeLine("Trying to click on: " + element.toString());
     }
     @Override
     public void afterClickOn(WebElement element, WebDriver driver) {
-        System.out.println("Clicked on: " + element.toString());
+        writeLine("Clicked on: " + element.toString());
     }
     @Override
     public void onException(Throwable error, WebDriver driver) {
-        System.out.println("Error occurred: " + error);
+        writeLine("Error occurred: " + error);
     }
-
+    private void writeLine(String str){
+        try{
+            fw.write(str);
+            fw.append('\n');
+            fw.flush();
+        }catch(IOException e){}
+    }
 }
