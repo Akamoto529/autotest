@@ -30,6 +30,7 @@ public class AddVideoByLinkTest extends TestBase {
 
     @AfterEach
     private void after() {
-        myVideoPage.deleteVideo(VIDEO_NAME);
+        myVideoPage.goToMyVideos()
+                .deleteVideo(VIDEO_NAME);
     }
 }

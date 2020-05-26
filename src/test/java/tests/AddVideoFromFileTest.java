@@ -34,6 +34,7 @@ public class AddVideoFromFileTest extends TestBase{
 
     @AfterEach
     private void after() {
-        videoPage.goToMyVideos().deleteVideo(VIDEO_NAME);
+        videoPage.goToMyVideos()
+                .deleteVideo(VIDEO_NAME);
     }
 }
