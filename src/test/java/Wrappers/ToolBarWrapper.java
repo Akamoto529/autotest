@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 
-public class ToolBarWrapper extends BasePage {
+public class ToolBarWrapper {
     private static final By TOOLBAR_LOCATOR = By.xpath(".//div[@class = 'toolbar']");
     private static final By VIDEO_BUTTON = By.xpath(".//*[@data-l='t,video']");
     private static final By MESSAGES_BUTTON = By.xpath(".//*[@data-l='t,messages']");
@@ -21,14 +21,15 @@ public class ToolBarWrapper extends BasePage {
     private static final By FRIENDS_BUTTON = By.xpath("");
     private static final By GUESTS_BUTTON = By.xpath("");
 
+    WebDriver driver;
     WebElement toolbar;
 
     public ToolBarWrapper(WebDriver driver){
-        super(driver);
+        this.driver = driver;
         this.toolbar = driver.findElement(TOOLBAR_LOCATOR);
     }
     public ToolBarWrapper(WebDriver driver, WebElement toolbar){
-        super(driver);
+        this.driver = driver;
         this.toolbar = toolbar;
     }
 

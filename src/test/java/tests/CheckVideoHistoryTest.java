@@ -3,7 +3,6 @@ package tests;
 import Pages.LoginPage;
 import Pages.VideoPage.IMyVideoHistoryPage;
 import Pages.VideoPage.IMyVideoPage;
-import Pages.VideoPage.MyVideoHistoryPage;
 import Wrappers.Accounts.Bot;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,9 +24,9 @@ public class CheckVideoHistoryTest extends TestBase {
     }
     @Test
     public void testCheckVideoHistoryTest () {
-        myVideoPage.goToMyVideos().getVideoCard().clickOnVideo(VIDEO_NAME).waitToGetInHistory().closeVideo();
+        myVideoPage.goToMyVideos().getVideoCard(VIDEO_NAME).clickOnVideo().waitToGetInHistory().closeVideo();
         myVideoHistoryPage = myVideoPage.goToMyHistory();
-        Assert.assertTrue(myVideoHistoryPage.getVideoCard().isVideoDisplayed(VIDEO_NAME));
+        Assert.assertTrue(myVideoHistoryPage.getVideoCard(VIDEO_NAME).isVideoDisplayed());
     }
    @AfterEach
     private void after(){

@@ -1,16 +1,12 @@
 package Pages.VideoPage;
 
-import Factories.PageFactory;
 import Factories.VideoPageFactory;
 import Pages.BasePage;
 import Pages.VideoPage.MyChannelsPage.IMyChannelsPage;
-import Pages.VideoPage.MyChannelsPage.MyChannelsPage;
 import Wrappers.ToolBarWrapper;
 import Wrappers.VideoCardWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 
 public class VideoPage extends BasePage implements IVideoPage {
 
@@ -26,14 +22,11 @@ public class VideoPage extends BasePage implements IVideoPage {
     private static final By CONTENT_BLOCK = By.xpath(".//div[contains(@id,'VideoContentBlock')]");
     private static final By SEARCH_BLOCK = By.xpath(".//div[contains(@class,'it_w search-input')]");
 
-    protected VideoCardWrapper videoCard;
     protected ToolBarWrapper toolbar;
 
     public VideoPage(WebDriver driver) {
         super(driver);
         this.toolbar = new ToolBarWrapper(driver);
-        this.videoCard = new VideoCardWrapper(driver);
-        //waitUntilPageLoad();
     }
 
     @Override
@@ -79,8 +72,8 @@ public class VideoPage extends BasePage implements IVideoPage {
         return VideoPageFactory.getMyVideoHistoryPage(driver);
     }
     @Override
-    public VideoCardWrapper getVideoCard(){
-        return videoCard;
+    public VideoCardWrapper getVideoCard(String videoName){
+        return new VideoCardWrapper(driver, videoName);
     }
     @Override
     public ToolBarWrapper getToolBar(){

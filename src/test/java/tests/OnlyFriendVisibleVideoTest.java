@@ -33,7 +33,7 @@ public class OnlyFriendVisibleVideoTest extends TestBase {
         newDriver.get("https://ok.ru/");
         friendVideoPage = new LoginPage(newDriver)
                 .Login(bot2.getLogin(), bot2.getPassword()).goToFriendPage(BOT1_URL).goToFriendVideo();
-        Assert.assertFalse(friendVideoPage.getVideoCard().isVideoDisplayed(VIDEO_NAME));
+        Assert.assertFalse(friendVideoPage.getVideoCard(VIDEO_NAME).isVideoDisplayed());
         newDriver.quit();
     }
     @AfterEach

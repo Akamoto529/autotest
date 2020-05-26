@@ -25,7 +25,7 @@ public class AddVideoByLinkTest extends TestBase {
     @Test
     public void testAddVideoByLink() {
         Assert.assertTrue(myVideoPage.downloadVideoByLink(VIDEO_LINK)
-                .getVideoCard().isVideoDisplayed(VIDEO_NAME));
+                .getVideoCard(VIDEO_NAME).isVideoDisplayed());
 
     }
 

@@ -2,8 +2,6 @@ package tests;
 
 import Pages.LoginPage;
 import Pages.VideoPage.IMyVideoPage;
-import Pages.VideoPage.IVideoPage;
-import Pages.VideoPage.VideoPage;
 import Wrappers.Accounts.Bot;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -27,7 +25,7 @@ public class AddVideoFromFileTest extends TestBase{
     public void testAddVideoFromFile() {
         Assert.assertTrue(videoPage.downloadVideoFromFile(PATH_TO_VIDEO)
                 .goToMyVideos()
-                .getVideoCard().isVideoDisplayed(VIDEO_NAME));
+                .getVideoCard(VIDEO_NAME).isVideoDisplayed());
     }
 
     @AfterEach

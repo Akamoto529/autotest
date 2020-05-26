@@ -2,23 +2,27 @@ package Wrappers;
 
 import Factories.LayerFactory;
 import Layers.IVideoLayer;
-import Pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
-public class VideoCardWrapper extends BasePage {
+public class VideoCardWrapper {
 
-    public VideoCardWrapper(WebDriver driver){
-        super(driver);
+    private final WebDriver driver;
+    private final WebElement videoCard;
+    public VideoCardWrapper(WebDriver driver, WebElement videoCard){
+        this.driver = driver;
+        this.videoCard = videoCard;
     }
-    public boolean isVideoDisplayed(String videoByLinkName) {
-        return isDisplayed(getVideoCardByXPath(videoByLinkName));
+    public VideoCardWrapper(WebDriver driver, String videoName){
+        this.driver = driver;
+        this.videoCard = this.driver.findElement(By.xpath(".//div[@class = 'video-card_n-w']//child::a[@title = '"+videoName+"']"));
     }
-    private By getVideoCardByXPath(String videoCardName){
-        return By.xpath(".//div[@class = 'video-card_n-w']//child::a[@title = '"+videoCardName+"']");
+    public boolean isVideoDisplayed() {
+        return videoCard.isDisplayed();
     }
-    public IVideoLayer clickOnVideo(String videoName){
-        click(getVideoCardByXPath(videoName));
+    public IVideoLayer clickOnVideo(){
+        videoCard.click();
         return LayerFactory.getVideoLayer(driver);
     }
 }
