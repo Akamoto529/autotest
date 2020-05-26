@@ -9,19 +9,21 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class CreateChannelTest extends TestBase {
-    private final String CHANNEL_NAME = "TestName";
-    private final Bot bot = new Bot("technopolisbot1","technopolis16");
+    private final static String CHANNEL_NAME = "TestName";
+    private final static Bot bot = new Bot("technopolisbot1", "technopolis16");
     private IVideoPage videoPage;
+
     @BeforeEach
-    private void before(){
+    private void before() {
         videoPage = new LoginPage(e_driver)
                 .Login(bot.getLogin(), bot.getPassword())
                 .getToolBar().clickVideo();
     }
+
     @Test
     public void testChannelCreation() {
+        videoPage.createChannel(CHANNEL_NAME);
         Assertions.assertTrue(videoPage
-                .createChannel(CHANNEL_NAME)
                 .goToMyChannels()
                 .isChannelDisplayed(CHANNEL_NAME));
     }

@@ -6,6 +6,8 @@ import Wrappers.WithCommentaries;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class VideoLayer extends BasePage implements WithCommentaries, IVideoLayer {
     private static final By COMMENT_INPUT_FIELD = By.xpath(".//div[@class = 'comments_add-itx']//child::div[contains(@id,'field_dM')]");
@@ -29,8 +31,7 @@ public class VideoLayer extends BasePage implements WithCommentaries, IVideoLaye
 
     @Override
     public void closeVideo () {
-        Actions action = new Actions(driver);
-        action.moveByOffset(0,0).click();
+       clickOnOffset(0,0);
     }
 
     @Override

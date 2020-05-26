@@ -14,10 +14,10 @@ import org.junit.jupiter.api.Test;
 import org.testng.Assert;
 
 public class CommentTest extends TestBase{
-    private final String VIDEO_NAME = "Cats and Domino";
-    private final String COMMENT_TEXT = "TestCommentary";
-    private final String PATH_TO_VIDEO = "C:\\Cats and Domino.mp4";
-    private final Bot bot = new Bot("TechoBot7","TechnoPolis19");
+    private final static String VIDEO_NAME = "Cats and Domino";
+    private final static String COMMENT_TEXT = "TestCommentary";
+    private final static String PATH_TO_VIDEO = "C:\\Cats and Domino.mp4";
+    private final static Bot bot = new Bot("TechoBot7","TechnoPolis19");
     private IMyVideoPage myVideoPage;
     private IVideoLayer videoLayer;
     @BeforeEach
@@ -31,9 +31,8 @@ public class CommentTest extends TestBase{
 
     @Test
     public void testCommentSending() {
-        videoLayer = new MyVideoPage(driver).getVideoCard().clickOnVideo(VIDEO_NAME);
+        videoLayer = new MyVideoPage(driver).getVideoCard().clickOnVideo(VIDEO_NAME).typeComment(COMMENT_TEXT);
         Assert.assertTrue(videoLayer
-                .typeComment(COMMENT_TEXT)
                 .isCommentDisplayed(COMMENT_TEXT));
     }
 

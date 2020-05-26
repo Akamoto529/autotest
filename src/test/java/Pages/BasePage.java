@@ -65,9 +65,9 @@ public abstract class BasePage {
         Actions action = new Actions(driver);
         action.moveToElement(driver.findElement(move)).pause(1).click(driver.findElement(click)).build().perform();
     }
-    public UserPage addFriend(String friendUrl) {
-        driver.get(friendUrl);
-        click(ADD_FRIEND_BUTTON);
-        return new UserPage(driver);
+
+    protected void clickOnOffset(int xOffset, int yOffset) {
+        Actions action = new Actions(driver);
+        action.moveByOffset(xOffset,yOffset).click();
     }
 }

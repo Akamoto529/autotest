@@ -14,7 +14,7 @@ public class ChatLayer extends BasePage implements IChatLayer {
 
     @Override
     public IChatLayer clickUserChat(String userName) {
-        click(By.xpath(".//*[./*[./div[@class='chats_i_h ellip'and text() = '"+userName+"' ]]]"));
+        click(By.xpath(".//div[@class='chats_i_h ellip'and text() =  '"+userName+"' ]"));
         return this;
     }
 
@@ -26,7 +26,7 @@ public class ChatLayer extends BasePage implements IChatLayer {
     }
 
     @Override
-    public boolean checkLastMessage(String text) {
-        return isPresent(By.xpath(".//div[@class='msg js-msg soh-s __me __private __collapsed __last']//span[text() = '" + text + "']"));
+    public boolean checkMessageByText(String text) {
+        return isDisplayed(By.xpath(".//div[@class='msg js-msg soh-s __me __private __collapsed __last']//span[text() = '" + text + "']"));
     }
 }

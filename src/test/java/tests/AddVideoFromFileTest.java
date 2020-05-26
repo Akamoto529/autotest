@@ -11,9 +11,9 @@ import org.junit.jupiter.api.Test;
 import org.testng.Assert;
 
 public class AddVideoFromFileTest extends TestBase{
-    private final String PATH_TO_VIDEO = "C:\\Cats and Domino.mp4";
-    private final String VIDEO_NAME = "Cats and Domino";
-    private final Bot bot = new Bot("technopolisbot1","technopolis16");
+    private final static String PATH_TO_VIDEO = "C:\\Cats and Domino.mp4";
+    private final static String VIDEO_NAME = "Cats and Domino";
+    private final static Bot bot = new Bot("technopolisbot1","technopolis16");
     private IMyVideoPage videoPage;
     @BeforeEach
     private void before(){
@@ -25,9 +25,11 @@ public class AddVideoFromFileTest extends TestBase{
 
     @Test
     public void testAddVideoFromFile() {
-        Assert.assertTrue(videoPage.downloadVideoFromFile(PATH_TO_VIDEO)
-                .goToMyVideos()
-                .getVideoCard().isVideoDisplayed(VIDEO_NAME));
+        videoPage.downloadVideoFromFile(PATH_TO_VIDEO)
+                .goToMyVideos();
+        Assert.assertTrue(videoPage
+                .getVideoCard()
+                .isVideoDisplayed(VIDEO_NAME));
     }
 
     @AfterEach

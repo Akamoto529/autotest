@@ -12,8 +12,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class DeleteChannelTest extends TestBase {
-    private final String CHANNEL_NAME = "TestName";
-    private final Bot bot = new Bot("technopolisbot1","technopolis16");
+    private final static String CHANNEL_NAME = "TestName";
+    private final static Bot bot = new Bot("technopolisbot1","technopolis16");
     private IChannelPage channelPage;
     @BeforeEach
     private void before(){
@@ -24,7 +24,8 @@ public class DeleteChannelTest extends TestBase {
     }
     @Test
     public void testChannelDeletion() {
-        Assertions.assertFalse(channelPage.deleteChannel().isChannelDisplayed(CHANNEL_NAME));
+        channelPage.deleteChannel();
+        Assertions.assertFalse(channelPage.goToMyChannels().isChannelDisplayed(CHANNEL_NAME));
     }
 
 }
